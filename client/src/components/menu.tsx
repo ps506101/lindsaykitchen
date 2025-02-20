@@ -44,9 +44,21 @@ export default function Menu() {
                             </span>
                           </div>
                           {item.description && (
-                            <p className="text-muted-foreground">
+                            <p className="text-muted-foreground mb-2">
                               {item.description}
                             </p>
+                          )}
+                          {item.customizations && item.customizations.length > 0 && (
+                            <div className="mt-3 pt-3 border-t border-border">
+                              <p className="text-sm font-medium mb-2">Customizations:</p>
+                              <ul className="text-sm text-muted-foreground">
+                                {item.customizations.map((option, index) => (
+                                  <li key={index} className="mb-1">
+                                    {option}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           )}
                         </CardContent>
                       </Card>

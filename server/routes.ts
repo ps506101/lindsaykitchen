@@ -5,32 +5,166 @@ import { storage } from "./storage";
 const menuData = [
   // Breakfast Items
   {
-    name: "Breakfast Burrito",
-    description: "Eggs, cheese, potatoes with choice of bacon, sausage or chorizo",
-    price: "$4.99",
+    name: "Tex-Mex Tacos",
+    description: "Egg, Cheese & Choice of Meat (Chorizo, Bacon, Ham, Sausage). Side of Salsa included",
+    price: "$10.99",
     category: "Breakfast",
-    image: "breakfast-burrito.jpg"
+    customizations: ["Add Potatoes +$1"],
+    image: "breakfast-tacos.jpg"
   },
   {
-    name: "Breakfast Sandwich",
-    description: "Eggs and cheese with choice of bacon, sausage or ham",
+    name: "Omelette",
+    description: "2 Farm Eggs (Any Style) with Choice of Cheese (American, Cheddar, Swiss, Pepper Jack)",
+    price: "$9.99",
+    category: "Breakfast",
+    customizations: [
+      "Add Onions, Tomatoes, Bell Peppers +$1",
+      "Add Mushrooms, Spinach +$1.50",
+      "Add Bacon, Sausage, Ham +$2",
+      "Add Avocado +$2"
+    ],
+    image: "omelette.jpg"
+  },
+  {
+    name: "Single Pancake",
+    description: "One fluffy pancake",
     price: "$3.99",
     category: "Breakfast",
-    image: "breakfast-sandwich.jpg"
+    customizations: [
+      "Add Chocolate Chips or Blueberries +$1",
+      "Add Banana & Whip Cream +$2"
+    ],
+    image: "pancake.jpg"
   },
   {
-    name: "Pancake Platter",
-    description: "3 fluffy pancakes served with butter and syrup",
-    price: "$4.99",
+    name: "Double Pancakes",
+    description: "Two fluffy pancakes",
+    price: "$6.99",
     category: "Breakfast",
-    image: "pancakes.jpg"
+    customizations: [
+      "Add Chocolate Chips or Blueberries +$1",
+      "Add Banana & Whip Cream +$2"
+    ],
+    image: "double-pancakes.jpg"
   },
   {
-    name: "Biscuits & Gravy",
-    description: "Fresh baked biscuits topped with savory sausage gravy",
+    name: "Triple Pancakes",
+    description: "Three fluffy pancakes",
+    price: "$8.99",
+    category: "Breakfast",
+    customizations: [
+      "Add Chocolate Chips or Blueberries +$1",
+      "Add Banana & Whip Cream +$2"
+    ],
+    image: "triple-pancakes.jpg"
+  },
+  {
+    name: "Waffle",
+    description: "One fresh waffle",
     price: "$4.99",
     category: "Breakfast",
-    image: "biscuits-gravy.jpg"
+    customizations: [
+      "Add Chocolate Chips or Blueberries +$1",
+      "Add Banana & Whip Cream +$2"
+    ],
+    image: "waffle.jpg"
+  },
+  {
+    name: "French Toast",
+    description: "2 Pieces of French Toast",
+    price: "$7.99",
+    category: "Breakfast",
+    customizations: [
+      "Add Chocolate Chips or Blueberries +$1",
+      "Add Banana & Whip Cream +$2"
+    ],
+    image: "french-toast.jpg"
+  },
+  // Breakfast Sides
+  {
+    name: "Two Eggs Any Style",
+    description: "Fresh farm eggs cooked to your preference",
+    price: "$3.99",
+    category: "Breakfast",
+    image: "eggs.jpg"
+  },
+  {
+    name: "Bacon",
+    description: "3 pieces of crispy bacon",
+    price: "$4.99",
+    category: "Breakfast",
+    image: "bacon.jpg"
+  },
+  {
+    name: "Sausage",
+    description: "2 pieces of breakfast sausage",
+    price: "$4.99",
+    category: "Breakfast",
+    image: "sausage.jpg"
+  },
+  {
+    name: "Breakfast Potatoes",
+    description: "Seasoned breakfast potatoes",
+    price: "$3.99",
+    category: "Breakfast",
+    image: "potatoes.jpg"
+  },
+  {
+    name: "Toast",
+    description: "Choice of White, Wheat, or Sourdough",
+    price: "$2.99",
+    category: "Breakfast",
+    image: "toast.jpg"
+  },
+  // Breakfast Beverages
+  {
+    name: "Small Coffee",
+    description: "Fresh brewed coffee",
+    price: "$2.50",
+    category: "Drinks",
+    image: "small-coffee.jpg"
+  },
+  {
+    name: "Large Coffee",
+    description: "Fresh brewed coffee",
+    price: "$3.50",
+    category: "Drinks",
+    image: "large-coffee.jpg"
+  },
+  {
+    name: "Hot Tea",
+    description: "Choice of tea varieties",
+    price: "$2.50",
+    category: "Drinks",
+    image: "tea.jpg"
+  },
+  {
+    name: "Orange Juice",
+    description: "Fresh orange juice",
+    price: "$2.50",
+    category: "Drinks",
+    image: "orange-juice.jpg"
+  },
+  {
+    name: "Apple Juice",
+    description: "Fresh apple juice",
+    price: "$2.50",
+    category: "Drinks",
+    image: "apple-juice.jpg"
+  },
+  {
+    name: "Bottled Water",
+    description: "Pure bottled water",
+    price: "$1.50",
+    category: "Drinks",
+    image: "water.jpg"
+  },
+  {
+    name: "Soft Drinks",
+    description: "Choice of Coke, Diet Coke, or Sprite",
+    price: "$2.50",
+    category: "Drinks",
+    image: "soda.jpg"
   },
   // Special Cuisine (Indian Food)
   // Veg Appetizers
