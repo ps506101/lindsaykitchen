@@ -55,7 +55,56 @@ const menuData = [
     category: "Special Cuisine",
     image: "aloo-tikki.jpg"
   },
+  {
+    name: "Sabudana Vada (3 pcs)",
+    description: "Crispy sago pearls patties, traditional fasting food",
+    price: "$5.99",
+    category: "Special Cuisine",
+    image: "sabudana-vada.jpg"
+  },
+  {
+    name: "Batata Vada (2 pcs)",
+    description: "Spiced potato fritters served with chutney",
+    price: "$4.99",
+    category: "Special Cuisine",
+    image: "batata-vada.jpg"
+  },
+  {
+    name: "Veg Manchuria",
+    description: "Vegetable balls in Indo-Chinese sauce",
+    price: "$7.99",
+    category: "Special Cuisine",
+    image: "veg-manchuria.jpg"
+  },
+  {
+    name: "Gobi Manchuria",
+    description: "Crispy cauliflower in Indo-Chinese sauce",
+    price: "$7.99",
+    category: "Special Cuisine",
+    image: "gobi-manchuria.jpg"
+  },
+  {
+    name: "Honey Chilli Cauliflower",
+    description: "Crispy cauliflower in sweet and spicy sauce",
+    price: "$7.99",
+    category: "Special Cuisine",
+    image: "honey-chilli-cauliflower.jpg"
+  },
   // Non-Veg Appetizers
+  {
+    name: "Chicken Samosa (2 pcs)",
+    description: "Crispy pastry filled with spiced chicken",
+    price: "$5.99",
+    category: "Special Cuisine",
+    image: "chicken-samosa.jpg"
+  },
+  {
+    name: "Beef Samosa (2 pcs)",
+    description: "Crispy pastry filled with spiced beef",
+    price: "$5.99",
+    category: "Special Cuisine",
+    image: "beef-samosa.jpg"
+  },
   {
     name: "Chicken 65",
     description: "Spicy, deep-fried chicken with curry leaves",
@@ -70,14 +119,28 @@ const menuData = [
     category: "Special Cuisine",
     image: "chicken-lollipop.jpg"
   },
-  // Veg Entries
   {
-    name: "Palak Paneer",
-    description: "Cottage cheese cubes in creamy spinach sauce",
-    price: "$12.99",
+    name: "Fish 65",
+    description: "Spicy, deep-fried fish with Indian spices",
+    price: "$9.99",
     category: "Special Cuisine",
-    image: "palak-paneer.jpg"
+    image: "fish-65.jpg"
   },
+  {
+    name: "Shrimp 65",
+    description: "Spicy, deep-fried shrimp with Indian spices",
+    price: "$10.99",
+    category: "Special Cuisine",
+    image: "shrimp-65.jpg"
+  },
+  {
+    name: "Meatballs (6 pcs)",
+    description: "Spiced meatballs in rich sauce",
+    price: "$8.99",
+    category: "Special Cuisine",
+    image: "meatballs.jpg"
+  },
+  // Veg Entries
   {
     name: "Channa Masala",
     description: "Chickpeas in spiced tomato gravy",
@@ -86,13 +149,69 @@ const menuData = [
     image: "channa-masala.jpg"
   },
   {
+    name: "Bendi Masala",
+    description: "Okra cooked with onions and Indian spices",
+    price: "$11.99",
+    category: "Special Cuisine",
+    image: "bendi-masala.jpg"
+  },
+  {
+    name: "Baigan Bartha",
+    description: "Smoky mashed eggplant with spices",
+    price: "$11.99",
+    category: "Special Cuisine",
+    image: "baigan-bartha.jpg"
+  },
+  {
+    name: "Palak Paneer",
+    description: "Cottage cheese cubes in creamy spinach sauce",
+    price: "$12.99",
+    category: "Special Cuisine",
+    image: "palak-paneer.jpg"
+  },
+  {
+    name: "Navarathan Kurma",
+    description: "Mixed vegetables in rich cream sauce",
+    price: "$12.99",
+    category: "Special Cuisine",
+    image: "navarathan-kurma.jpg"
+  },
+  {
     name: "Malai Kofta",
     description: "Vegetable and cheese dumplings in rich cream sauce",
     price: "$13.99",
     category: "Special Cuisine",
     image: "malai-kofta.jpg"
   },
+  {
+    name: "Paneer Butter Masala",
+    description: "Cottage cheese in rich tomato-cream sauce",
+    price: "$13.99",
+    category: "Special Cuisine",
+    image: "paneer-butter-masala.jpg"
+  },
+  {
+    name: "Paneer Tikka Masala",
+    description: "Grilled cottage cheese in spiced gravy",
+    price: "$13.99",
+    category: "Special Cuisine",
+    image: "paneer-tikka-masala.jpg"
+  },
   // Non-Veg Entries
+  {
+    name: "Chicken Curry",
+    description: "Traditional Indian chicken curry",
+    price: "$13.99",
+    category: "Special Cuisine",
+    image: "chicken-curry.jpg"
+  },
+  {
+    name: "Chicken Vindaloo",
+    description: "Spicy curry with potatoes and chicken",
+    price: "$14.99",
+    category: "Special Cuisine",
+    image: "chicken-vindaloo.jpg"
+  },
   {
     name: "Butter Chicken",
     description: "Tender chicken in a rich, creamy tomato sauce",
@@ -108,11 +227,46 @@ const menuData = [
     image: "chicken-tikka-masala.jpg"
   },
   {
+    name: "Chicken Saag",
+    description: "Chicken cooked with creamy spinach",
+    price: "$14.99",
+    category: "Special Cuisine",
+    image: "chicken-saag.jpg"
+  },
+  {
+    name: "Beef Curry",
+    description: "Traditional Indian beef curry",
+    price: "$15.99",
+    category: "Special Cuisine",
+    image: "beef-curry.jpg"
+  },
+  {
     name: "Lamb Curry",
-    description: "Tender lamb pieces in aromatic curry sauce",
+    description: "Traditional Indian lamb curry",
     price: "$15.99",
     category: "Special Cuisine",
     image: "lamb-curry.jpg"
+  },
+  {
+    name: "Lamb Saag",
+    description: "Lamb cooked with creamy spinach",
+    price: "$15.99",
+    category: "Special Cuisine",
+    image: "lamb-saag.jpg"
+  },
+  {
+    name: "Shrimp Curry",
+    description: "Shrimp cooked in aromatic curry sauce",
+    price: "$15.99",
+    category: "Special Cuisine",
+    image: "shrimp-curry.jpg"
+  },
+  {
+    name: "Fish Curry",
+    description: "Fish cooked in traditional spices",
+    price: "$14.99",
+    category: "Special Cuisine",
+    image: "fish-curry.jpg"
   },
   {
     name: "Tandoori Chicken",
