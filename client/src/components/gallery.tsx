@@ -5,54 +5,49 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const menuImages = [
   {
-    url: "/menu-images/biryani.jpg",
+    url: "/attached_assets/WhatsApp Image 2025-02-07 at 6.39.32 PM.jpeg",
     title: "Chicken Biryani",
     category: "Special Cuisine"
   },
   {
-    url: "/menu-images/butter-chicken.jpg",
+    url: "/attached_assets/WhatsApp Image 2025-02-07 at 6.39.32 PM (1).jpeg",
     title: "Butter Chicken",
     category: "Special Cuisine"
   },
   {
-    url: "/menu-images/tandoori.jpg",
+    url: "/attached_assets/WhatsApp Image 2025-02-07 at 6.39.59 PM.jpeg",
     title: "Tandoori Chicken",
     category: "Special Cuisine"
   },
   {
-    url: "/menu-images/breakfast-burrito.jpg",
+    url: "/attached_assets/WhatsApp Image 2025-02-07 at 6.40.00 PM.jpeg",
+    title: "Vegetable Curry",
+    category: "Special Cuisine"
+  },
+  {
+    url: "/attached_assets/WhatsApp Image 2025-02-10 at 9.38.43 AM.jpeg",
     title: "Breakfast Burrito",
     category: "Breakfast"
   },
   {
-    url: "/menu-images/pancakes.jpg",
+    url: "/attached_assets/WhatsApp Image 2025-02-10 at 9.39.02 AM.jpeg",
     title: "Pancake Platter",
     category: "Breakfast"
   },
   {
-    url: "/menu-images/biscuits-gravy.jpg",
-    title: "Biscuits & Gravy",
-    category: "Breakfast"
-  },
-  {
-    url: "/menu-images/burger.jpg",
-    title: "Classic Hamburger",
+    url: "/attached_assets/WhatsApp Image 2025-02-10 at 9.39.55 AM.jpeg",
+    title: "Burger Combo",
     category: "Lunch"
   },
   {
-    url: "/menu-images/chicken-strips.jpg",
+    url: "/attached_assets/WhatsApp Image 2025-02-10 at 9.53.47 AM.jpeg",
     title: "Chicken Strip Basket",
     category: "Lunch"
   },
   {
-    url: "/menu-images/blt.jpg",
-    title: "BLT Sandwich",
-    category: "Lunch"
-  },
-  {
-    url: "/menu-images/fries.jpg",
-    title: "French Fries",
-    category: "Sides"
+    url: "/attached_assets/WhatsApp Image 2025-02-10 at 12.24.56 PM.jpeg",
+    title: "Naan Bread",
+    category: "Special Cuisine"
   }
 ];
 
