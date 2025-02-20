@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 
-const categories = ["Breakfast", "Lunch", "Sides", "Drinks"];
+const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"];
 
 export default function Menu() {
   const { data: menuItems } = useQuery({
@@ -20,7 +20,7 @@ export default function Menu() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl font-bold text-center mb-12">Our Menu</h2>
-          
+
           <Tabs defaultValue="Breakfast" className="w-full">
             <TabsList className="w-full justify-center mb-8">
               {categories.map((category) => (

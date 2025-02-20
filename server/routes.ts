@@ -32,6 +32,42 @@ const menuData = [
     category: "Breakfast",
     image: "biscuits-gravy.jpg"
   },
+  // Special Cuisine (Indian Food)
+  {
+    name: "Chicken Biryani",
+    description: "Aromatic basmati rice cooked with tender chicken and special spices",
+    price: "$12.99",
+    category: "Special Cuisine",
+    image: "biryani.jpg"
+  },
+  {
+    name: "Butter Chicken",
+    description: "Tender chicken in a rich, creamy tomato sauce",
+    price: "$11.99",
+    category: "Special Cuisine",
+    image: "butter-chicken.jpg"
+  },
+  {
+    name: "Tandoori Chicken",
+    description: "Marinated chicken cooked in traditional clay oven",
+    price: "$11.99",
+    category: "Special Cuisine",
+    image: "tandoori-chicken.jpg"
+  },
+  {
+    name: "Vegetable Curry",
+    description: "Mixed vegetables in a flavorful curry sauce",
+    price: "$9.99",
+    category: "Special Cuisine",
+    image: "veg-curry.jpg"
+  },
+  {
+    name: "Naan Bread",
+    description: "Traditional Indian flatbread",
+    price: "$2.49",
+    category: "Special Cuisine",
+    image: "naan.jpg"
+  },
   // Lunch Items
   {
     name: "Hamburger",
