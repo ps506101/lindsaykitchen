@@ -33,40 +33,93 @@ const menuData = [
     image: "biscuits-gravy.jpg"
   },
   // Special Cuisine (Indian Food)
+  // Veg Appetizers
   {
-    name: "Chicken Biryani",
-    description: "Aromatic basmati rice cooked with tender chicken and special spices",
+    name: "Samosa (2 pcs)",
+    description: "Golden-brown pastry filled with spiced potatoes and peas",
+    price: "$4.99",
+    category: "Special Cuisine",
+    image: "samosa.jpg"
+  },
+  {
+    name: "Mix Veg Pakora",
+    description: "Assorted vegetable fritters with Indian spices",
+    price: "$5.99",
+    category: "Special Cuisine",
+    image: "pakora.jpg"
+  },
+  {
+    name: "Aloo Tikki (3 pcs)",
+    description: "Spiced potato patties served with chutney",
+    price: "$5.99",
+    category: "Special Cuisine",
+    image: "aloo-tikki.jpg"
+  },
+  // Non-Veg Appetizers
+  {
+    name: "Chicken 65",
+    description: "Spicy, deep-fried chicken with curry leaves",
+    price: "$8.99",
+    category: "Special Cuisine",
+    image: "chicken-65.jpg"
+  },
+  {
+    name: "Chicken Lollipop (5 pcs)",
+    description: "Spiced and crispy chicken winglets",
+    price: "$9.99",
+    category: "Special Cuisine",
+    image: "chicken-lollipop.jpg"
+  },
+  // Veg Entries
+  {
+    name: "Palak Paneer",
+    description: "Cottage cheese cubes in creamy spinach sauce",
     price: "$12.99",
     category: "Special Cuisine",
-    image: "biryani.jpg"
+    image: "palak-paneer.jpg"
   },
+  {
+    name: "Channa Masala",
+    description: "Chickpeas in spiced tomato gravy",
+    price: "$11.99",
+    category: "Special Cuisine",
+    image: "channa-masala.jpg"
+  },
+  {
+    name: "Malai Kofta",
+    description: "Vegetable and cheese dumplings in rich cream sauce",
+    price: "$13.99",
+    category: "Special Cuisine",
+    image: "malai-kofta.jpg"
+  },
+  // Non-Veg Entries
   {
     name: "Butter Chicken",
     description: "Tender chicken in a rich, creamy tomato sauce",
-    price: "$11.99",
+    price: "$14.99",
     category: "Special Cuisine",
     image: "butter-chicken.jpg"
   },
   {
+    name: "Chicken Tikka Masala",
+    description: "Grilled chicken in spiced tomato gravy",
+    price: "$14.99",
+    category: "Special Cuisine",
+    image: "chicken-tikka-masala.jpg"
+  },
+  {
+    name: "Lamb Curry",
+    description: "Tender lamb pieces in aromatic curry sauce",
+    price: "$15.99",
+    category: "Special Cuisine",
+    image: "lamb-curry.jpg"
+  },
+  {
     name: "Tandoori Chicken",
-    description: "Marinated chicken cooked in traditional clay oven",
-    price: "$11.99",
+    description: "Clay oven roasted chicken with Indian spices",
+    price: "$13.99",
     category: "Special Cuisine",
     image: "tandoori-chicken.jpg"
-  },
-  {
-    name: "Vegetable Curry",
-    description: "Mixed vegetables in a flavorful curry sauce",
-    price: "$9.99",
-    category: "Special Cuisine",
-    image: "veg-curry.jpg"
-  },
-  {
-    name: "Naan Bread",
-    description: "Traditional Indian flatbread",
-    price: "$2.49",
-    category: "Special Cuisine",
-    image: "naan.jpg"
   },
   // Lunch Items
   {
