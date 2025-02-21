@@ -6,12 +6,13 @@ export default function Hero() {
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/90 to-primary text-white">
       <div 
-        className="absolute inset-0 z-0 opacity-30"
+        className="absolute inset-0 z-0 opacity-50"
         style={{
           backgroundImage: 'url("/assets/menu-images/WhatsApp Image 2025-02-01 at 6.33.39 PM.jpeg")',
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'no-repeat',
+          filter: 'brightness(0.7)'
         }}
       />
       <div className="container mx-auto px-4 z-10">
