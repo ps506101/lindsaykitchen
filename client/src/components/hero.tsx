@@ -6,17 +6,17 @@ export default function Hero() {
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/90 to-primary text-white">
       <div 
-        className="absolute inset-0 z-0 bg-contain bg-center bg-no-repeat opacity-80"
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-70"
         style={{
           backgroundImage: 'url("/assets/menu-images/Logo.jpeg")',
-          backgroundSize: '300px',
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           mixBlendMode: 'multiply'
         }}
       />
       <div 
-        className="absolute inset-0 bg-black/30 z-[1]"
+        className="absolute inset-0 bg-black/40 z-[1]"
         aria-hidden="true"
       />
       <div className="container mx-auto px-4 z-[2] relative">
