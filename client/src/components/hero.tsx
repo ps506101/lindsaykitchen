@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Bell, Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import { SubscribeForm } from "./subscribe-form";
 
 export default function Hero() {
+  const [subscribeOpen, setSubscribeOpen] = useState(false);
+
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/90 to-primary text-white">
       <div 
@@ -46,7 +50,7 @@ export default function Hero() {
               size="lg"
               variant="outline"
               className="group w-full sm:w-auto bg-white/10 hover:bg-white/20 border-white/50"
-              onClick={() => window.location.href = "sms:9405801868?body=Subscribe to special deals"}
+              onClick={() => setSubscribeOpen(true)}
             >
               <Bell className="mr-2 h-5 w-5 group-hover:animate-pulse" />
               Subscribe to Special Deals
@@ -54,6 +58,7 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
+      <SubscribeForm open={subscribeOpen} onOpenChange={setSubscribeOpen} />
     </section>
   );
 }
