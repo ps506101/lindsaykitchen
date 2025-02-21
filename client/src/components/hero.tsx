@@ -31,7 +31,7 @@ export default function Hero() {
           className="text-center"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow-lg">
-            Lindsay Kitchen
+            One Stop Lindsay Kitchen
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-shadow">
             Delicious homestyle cooking at your local gas station
