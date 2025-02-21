@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
+import { Bell, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -32,15 +32,26 @@ export default function Hero() {
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-shadow">
             Delicious homestyle cooking at your local gas station
           </p>
-          <Button 
-            size="lg"
-            variant="secondary"
-            className="group"
-            onClick={() => window.location.href = "tel:9405801868"}
-          >
-            <Phone className="mr-2 h-5 w-5 group-hover:animate-pulse" />
-            Call to Order: (940) 580-1868
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button 
+              size="lg"
+              variant="secondary"
+              className="group w-full sm:w-auto"
+              onClick={() => window.location.href = "tel:9405801868"}
+            >
+              <Phone className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+              Call to Order: (940) 580-1868
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="group w-full sm:w-auto bg-white/10 hover:bg-white/20 border-white/50"
+              onClick={() => window.location.href = "sms:9405801868?body=Subscribe to special deals"}
+            >
+              <Bell className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+              Subscribe to Special Deals
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>
