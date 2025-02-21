@@ -9,7 +9,7 @@ export default function Hero() {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/attached_assets/WhatsApp Image 2025-01-22 at 6.51.06 PM.jpeg')",
+          backgroundImage: `url(${new URL('/attached_assets/WhatsApp Image 2025-01-22 at 6.51.06 PM.jpeg', import.meta.url).href})`,
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}
