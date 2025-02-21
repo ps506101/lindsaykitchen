@@ -1,15 +1,38 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { generateBackgroundImage } from "@/lib/imageGeneration";
 
 export default function Hero() {
+  const [backgroundImage, setBackgroundImage] = useState<string>('/attached_assets/WhatsApp Image 2025-01-22 at 6.51.06 PM.jpeg');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadBackgroundImage() {
+      try {
+        const imageUrl = await generateBackgroundImage();
+        setBackgroundImage(imageUrl);
+      } catch (error) {
+        console.error('Error loading background image:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadBackgroundImage();
+  }, []);
+
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
-      <div 
+      <motion.div 
         className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
         style={{
-          backgroundImage: `url(${new URL('/attached_assets/WhatsApp Image 2025-01-22 at 6.51.06 PM.jpeg', import.meta.url).href})`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}
