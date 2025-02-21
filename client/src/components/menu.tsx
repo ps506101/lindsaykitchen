@@ -45,9 +45,9 @@ export default function Menu() {
                   {menuItems?.filter(item => item.category === category)
                     .map((item) => (
                       <Card key={item.name} className="overflow-hidden hover:shadow-lg transition-shadow">
-                        <CardContent className="p-6">
+                        <CardContent className="p-4">
                           {item.image && (
-                            <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+                            <div className="relative w-full h-40 mb-3 rounded-lg overflow-hidden">
                               <img
                                 src={item.image.startsWith('/') ? item.image : `/assets/menu-images/${item.image}`}
                                 alt={item.name}
@@ -58,23 +58,23 @@ export default function Menu() {
                               />
                             </div>
                           )}
-                          <div className="flex justify-between items-start mb-4">
-                            <h3 className="text-xl font-semibold">{item.name}</h3>
+                          <div className="flex justify-between items-start mb-2">
+                            <h3 className="text-lg font-semibold">{item.name}</h3>
                             <span className="text-lg font-medium text-primary">
                               {item.price}
                             </span>
                           </div>
                           {item.description && (
-                            <p className="text-muted-foreground mb-2">
+                            <p className="text-sm text-muted-foreground mb-2">
                               {item.description}
                             </p>
                           )}
                           {item.customizations && item.customizations.length > 0 && (
-                            <div className="mt-3 pt-3 border-t border-border">
-                              <p className="text-sm font-medium mb-2">Customizations:</p>
-                              <ul className="text-sm text-muted-foreground">
+                            <div className="mt-2 pt-2 border-t border-border">
+                              <p className="text-xs font-medium mb-1">Customizations:</p>
+                              <ul className="text-xs text-muted-foreground">
                                 {item.customizations.map((option, index) => (
-                                  <li key={index} className="mb-1">
+                                  <li key={index} className="mb-0.5">
                                     {option}
                                   </li>
                                 ))}
