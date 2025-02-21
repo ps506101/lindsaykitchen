@@ -5,54 +5,57 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const menuImages = [
   {
-    url: "/attached_assets/WhatsApp Image 2025-02-07 at 6.39.32 PM.jpeg",
+    url: "/assets/menu-images/WhatsApp Image 2025-02-07 at 6.39.32 PM.jpeg",
     title: "Chicken Biryani",
     category: "Special Cuisine"
   },
   {
-    url: "/attached_assets/WhatsApp Image 2025-02-07 at 6.39.32 PM (1).jpeg",
+    url: "/assets/menu-images/WhatsApp Image 2025-02-07 at 6.39.32 PM (1).jpeg",
     title: "Butter Chicken",
     category: "Special Cuisine"
   },
   {
-    url: "/attached_assets/WhatsApp Image 2025-02-07 at 6.39.59 PM.jpeg",
+    url: "/assets/menu-images/WhatsApp Image 2025-02-07 at 6.39.59 PM.jpeg",
     title: "Tandoori Chicken",
     category: "Special Cuisine"
   },
   {
-    url: "/attached_assets/WhatsApp Image 2025-02-07 at 6.40.00 PM.jpeg",
+    url: "/assets/menu-images/WhatsApp Image 2025-02-07 at 6.40.00 PM.jpeg",
     title: "Vegetable Curry",
     category: "Special Cuisine"
   },
   {
-    url: "/attached_assets/WhatsApp Image 2025-02-10 at 9.38.43 AM.jpeg",
+    url: "/assets/menu-images/WhatsApp Image 2025-02-10 at 9.38.43 AM.jpeg",
     title: "Breakfast Burrito",
     category: "Breakfast"
   },
   {
-    url: "/attached_assets/WhatsApp Image 2025-02-10 at 9.39.02 AM.jpeg",
+    url: "/assets/menu-images/WhatsApp Image 2025-02-10 at 9.39.02 AM.jpeg",
     title: "Pancake Platter",
     category: "Breakfast"
   },
   {
-    url: "/attached_assets/WhatsApp Image 2025-02-10 at 9.39.55 AM.jpeg",
+    url: "/assets/menu-images/WhatsApp Image 2025-02-10 at 9.39.55 AM.jpeg",
     title: "Burger Combo",
     category: "Lunch"
   },
   {
-    url: "/attached_assets/WhatsApp Image 2025-02-10 at 9.53.47 AM.jpeg",
+    url: "/assets/menu-images/WhatsApp Image 2025-02-10 at 9.53.47 AM.jpeg",
     title: "Chicken Strip Basket",
     category: "Lunch"
   },
   {
-    url: "/attached_assets/WhatsApp Image 2025-02-10 at 12.24.56 PM.jpeg",
+    url: "/assets/menu-images/WhatsApp Image 2025-02-10 at 12.24.56 PM.jpeg",
     title: "Naan Bread",
     category: "Special Cuisine"
   }
 ];
 
+const fallbackImage = "/assets/menu-images/default-food.jpg";
+
 export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -64,10 +67,12 @@ export default function Gallery() {
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % menuImages.length);
+    setImageError(false);
   };
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + menuImages.length) % menuImages.length);
+    setImageError(false);
   };
 
   return (
@@ -95,6 +100,12 @@ export default function Gallery() {
                   <img
                     src={menuImages[currentIndex].url}
                     alt={menuImages[currentIndex].title}
+                    onError={(e) => {
+                      if (!imageError) {
+                        setImageError(true);
+                        e.currentTarget.src = fallbackImage;
+                      }
+                    }}
                     className="w-full h-[500px] object-cover"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4">
@@ -122,7 +133,10 @@ export default function Gallery() {
               {menuImages.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentIndex(index)}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                    setImageError(false);
+                  }}
                   className={`w-2 h-2 rounded-full transition-colors ${
                     index === currentIndex ? "bg-primary" : "bg-gray-300"
                   }`}

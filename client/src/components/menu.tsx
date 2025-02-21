@@ -2,8 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
+import { Utensils } from "lucide-react";
 
 const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"];
+
+const defaultImages = {
+  "Breakfast": "/assets/menu-images/breakfast-default.jpg",
+  "Special Cuisine": "/assets/menu-images/special-cuisine-default.jpg",
+  "Lunch": "/assets/menu-images/lunch-default.jpg",
+  "Sides": "/assets/menu-images/sides-default.jpg",
+  "Drinks": "/assets/menu-images/drinks-default.jpg"
+};
 
 export default function Menu() {
   const { data: menuItems } = useQuery({
@@ -35,8 +44,20 @@ export default function Menu() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {menuItems?.filter(item => item.category === category)
                     .map((item) => (
-                      <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                      <Card key={item.name} className="overflow-hidden hover:shadow-lg transition-shadow">
                         <CardContent className="p-6">
+                          {item.image && (
+                            <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+                              <img
+                                src={item.image.startsWith('/') ? item.image : `/assets/menu-images/${item.image}`}
+                                alt={item.name}
+                                onError={(e) => {
+                                  e.currentTarget.src = defaultImages[category];
+                                }}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
                           <div className="flex justify-between items-start mb-4">
                             <h3 className="text-xl font-semibold">{item.name}</h3>
                             <span className="text-lg font-medium text-primary">
