@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 const menuImages = [
   {
@@ -56,14 +56,17 @@ const fallbackImage = "/assets/menu-images/default-food.jpg";
 export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageError, setImageError] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % menuImages.length);
-    }, 3000);
-
+    let timer: NodeJS.Timeout;
+    if (!isPaused) {
+      timer = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % menuImages.length);
+      }, 3000);
+    }
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % menuImages.length);
@@ -73,6 +76,10 @@ export default function Gallery() {
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + menuImages.length) % menuImages.length);
     setImageError(false);
+  };
+
+  const togglePause = () => {
+    setIsPaused(prev => !prev);
   };
 
   return (
@@ -127,6 +134,16 @@ export default function Gallery() {
               className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition-colors"
             >
               <ChevronRight className="h-6 w-6" />
+            </button>
+            <button
+              onClick={togglePause}
+              className="absolute right-4 top-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition-colors"
+            >
+              {isPaused ? (
+                <Play className="h-6 w-6" />
+              ) : (
+                <Pause className="h-6 w-6" />
+              )}
             </button>
 
             <div className="flex justify-center mt-4 gap-2">
