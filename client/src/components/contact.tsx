@@ -3,9 +3,13 @@ import { Clock, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 const hours = [
-  { day: "Monday-Friday", time: "6:00 AM - 9:00 PM" },
-  { day: "Saturday", time: "7:00 AM - 9:00 PM" },
-  { day: "Sunday", time: "7:00 AM - 8:00 PM" },
+  { day: "Monday", time: "5:00 AM - 10:00 PM" },
+  { day: "Tuesday", time: "5:00 AM - 10:00 PM" },
+  { day: "Wednesday", time: "5:00 AM - 10:00 PM" },
+  { day: "Thursday", time: "5:00 AM - 10:00 PM" },
+  { day: "Friday", time: "5:00 AM - 11:00 PM" },
+  { day: "Saturday", time: "5:00 AM - 11:00 PM" },
+  { day: "Sunday", time: "5:00 AM - 11:00 PM" },
 ];
 
 export default function Contact() {
