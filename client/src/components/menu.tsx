@@ -41,13 +41,13 @@ export default function Menu() {
 
             {categories.map((category) => (
               <TabsContent key={category} value={category}>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                   {menuItems?.filter(item => item.category === category)
                     .map((item) => (
                       <Card key={item.name} className="overflow-hidden hover:shadow-lg transition-shadow">
-                        <CardContent className="p-4">
+                        <CardContent className="p-2">
                           {item.image && (
-                            <div className="relative w-full h-40 mb-3 rounded-lg overflow-hidden">
+                            <div className="relative w-full h-28 mb-2 rounded-lg overflow-hidden">
                               <img
                                 src={item.image.startsWith('/') ? item.image : `/assets/menu-images/${item.image}`}
                                 alt={item.name}
@@ -58,20 +58,20 @@ export default function Menu() {
                               />
                             </div>
                           )}
-                          <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-lg font-semibold">{item.name}</h3>
-                            <span className="text-lg font-medium text-primary">
+                          <div className="flex justify-between items-start mb-1">
+                            <h3 className="text-sm font-semibold">{item.name}</h3>
+                            <span className="text-sm font-medium text-primary">
                               {item.price}
                             </span>
                           </div>
                           {item.description && (
-                            <p className="text-sm text-muted-foreground mb-2">
+                            <p className="text-xs text-muted-foreground mb-1">
                               {item.description}
                             </p>
                           )}
                           {item.customizations && item.customizations.length > 0 && (
-                            <div className="mt-2 pt-2 border-t border-border">
-                              <p className="text-xs font-medium mb-1">Customizations:</p>
+                            <div className="mt-1 pt-1 border-t border-border">
+                              <p className="text-xs font-medium mb-0.5">Customizations:</p>
                               <ul className="text-xs text-muted-foreground">
                                 {item.customizations.map((option, index) => (
                                   <li key={index} className="mb-0.5">
