@@ -35,7 +35,7 @@ export default function Contact() {
                       <p>430 JM Lindsay Blvd</p>
                       <p>Lindsay, TX 76250</p>
                       <a 
-                        href="https://maps.google.com/?q=430+JM+Lindsay+Blvd,+Lindsay,+TX+76250"
+                        href="https://maps.app.goo.gl/xoCqYB7wsUksJPYw7"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline mt-2 inline-block"
