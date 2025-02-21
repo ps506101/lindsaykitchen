@@ -115,10 +115,6 @@ export default function Gallery() {
                     }}
                     className="w-full h-[500px] object-cover"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4">
-                    <h3 className="text-xl font-semibold">{menuImages[currentIndex].title}</h3>
-                    <p className="text-sm opacity-75">{menuImages[currentIndex].category}</p>
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>
