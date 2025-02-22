@@ -1,57 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
-import type { MenuItem } from "@shared/schema";
+import { menuData } from "../data/menu";
 
 const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"];
 
 export default function Menu() {
-  const { data: menuItems, isLoading, error } = useQuery<MenuItem[]>({
-    queryKey: ["/api/menu"],
-    retry: 3,
-    retryDelay: 1000,
-    onError: (err) => {
-      console.error("Failed to fetch menu items:", err);
-    },
-    onSuccess: (data) => {
-      console.log("Successfully fetched menu items:", data?.length);
-    }
-  });
-
-  if (isLoading) {
-    return (
-      <section id="menu" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Loading Menu...</h2>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section id="menu" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Error Loading Menu</h2>
-          <p className="text-center text-red-500">
-            {error instanceof Error ? error.message : "Please try again later."}
-          </p>
-        </div>
-      </section>
-    );
-  }
-
-  if (!menuItems || menuItems.length === 0) {
-    return (
-      <section id="menu" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">No Menu Items Available</h2>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="menu" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -73,7 +27,7 @@ export default function Menu() {
             </TabsList>
 
             {categories.map((category) => {
-              const categoryItems = menuItems.filter(item => item.category === category);
+              const categoryItems = menuData.filter(item => item.category === category);
 
               return (
                 <TabsContent key={category} value={category}>
