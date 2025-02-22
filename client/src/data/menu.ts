@@ -165,6 +165,150 @@ export const menuData: MenuItem[] = [
     price: "$13.99",
     category: "Special Cuisine"
   },
+    {
+    name: "Sabudana Vada (3 pcs)",
+    description: "Crispy sago pearls patties, traditional fasting food",
+    price: "$5.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Batata Vada (2 pcs)",
+    description: "Spiced potato fritters served with chutney",
+    price: "$4.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Veg Manchuria",
+    description: "Vegetable balls in Indo-Chinese sauce",
+    price: "$7.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Gobi Manchuria",
+    description: "Crispy cauliflower in Indo-Chinese sauce",
+    price: "$7.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Honey Chilli Cauliflower",
+    description: "Crispy cauliflower in sweet and spicy sauce",
+    price: "$7.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Chicken Lollipop (5 pcs)",
+    description: "Spiced and crispy chicken winglets",
+    price: "$9.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Fish 65",
+    description: "Spicy, deep-fried fish with Indian spices",
+    price: "$9.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Shrimp 65",
+    description: "Spicy, deep-fried shrimp with Indian spices",
+    price: "$10.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Meatballs (6 pcs)",
+    description: "Spiced meatballs in rich sauce",
+    price: "$8.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Channa Masala",
+    description: "Chickpeas in spiced tomato gravy",
+    price: "$11.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Bendi Masala",
+    description: "Okra cooked with onions and Indian spices",
+    price: "$11.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Baigan Bartha",
+    description: "Smoky mashed eggplant with spices",
+    price: "$11.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Palak Paneer",
+    description: "Cottage cheese cubes in creamy spinach sauce",
+    price: "$12.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Navarathan Kurma",
+    description: "Mixed vegetables in rich cream sauce",
+    price: "$12.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Malai Kofta",
+    description: "Vegetable and cheese dumplings in rich cream sauce",
+    price: "$13.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Paneer Butter Masala",
+    description: "Cottage cheese in rich tomato-cream sauce",
+    price: "$13.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Paneer Tikka Masala",
+    description: "Grilled cottage cheese in spiced gravy",
+    price: "$13.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Chicken Curry",
+    description: "Traditional Indian chicken curry",
+    price: "$13.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Chicken Vindaloo",
+    description: "Spicy curry with potatoes and chicken",
+    price: "$14.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Beef Curry",
+    description: "Traditional Indian beef curry",
+    price: "$15.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Lamb Curry",
+    description: "Traditional Indian lamb curry",
+    price: "$15.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Lamb Saag",
+    description: "Lamb cooked with creamy spinach",
+    price: "$15.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Shrimp Curry",
+    description: "Shrimp cooked in aromatic curry sauce",
+    price: "$15.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Fish Curry",
+    description: "Fish cooked in traditional spices",
+    price: "$14.99",
+    category: "Special Cuisine"
+  },
   // Lunch Items
   {
     name: "Hamburger",
