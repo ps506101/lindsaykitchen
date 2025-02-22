@@ -6,36 +6,12 @@ import type { MenuItem } from "@shared/schema";
 
 const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"];
 
-// Update default image paths to be relative to public directory
-const defaultImages = {
-  "Breakfast": "menu-images/breakfast-default.jpg",
-  "Special Cuisine": "menu-images/special-cuisine-default.jpg",
-  "Lunch": "menu-images/lunch-default.jpg",
-  "Sides": "menu-images/sides-default.jpg",
-  "Drinks": "menu-images/drinks-default.jpg"
-} as const;
-
-// Helper function to get correct image path
-const getImagePath = (imagePath: string | undefined, category: string) => {
-  if (!imagePath) return defaultImages[category as keyof typeof defaultImages];
-  if (imagePath.startsWith('http')) return imagePath;
-  // Remove any leading slashes and ensure proper path format
-  return `menu-images/${imagePath.replace(/^[\/\\]+/, '')}`;
-};
-
 export default function Menu() {
   const { data: menuItems, isLoading, error } = useQuery<MenuItem[]>({
-    queryKey: ["/api/menu"],
-    onError: (error) => {
-      console.error("Failed to fetch menu items:", error);
-    },
-    onSuccess: (data) => {
-      console.log("Successfully fetched menu items:", data?.length);
-    }
+    queryKey: ["/api/menu"]
   });
 
   if (isLoading) {
-    console.log("Loading menu items...");
     return (
       <section id="menu" className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -46,7 +22,6 @@ export default function Menu() {
   }
 
   if (error) {
-    console.error("Error in Menu component:", error);
     return (
       <section id="menu" className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -60,7 +35,6 @@ export default function Menu() {
   }
 
   if (!menuItems || menuItems.length === 0) {
-    console.log("No menu items available");
     return (
       <section id="menu" className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -69,8 +43,6 @@ export default function Menu() {
       </section>
     );
   }
-
-  console.log(`Rendering ${menuItems.length} menu items`);
 
   return (
     <section id="menu" className="py-20 bg-background">
@@ -94,38 +66,26 @@ export default function Menu() {
 
             {categories.map((category) => {
               const categoryItems = menuItems.filter(item => item.category === category);
-              console.log(`Category ${category} has ${categoryItems.length} items`);
 
               return (
                 <TabsContent key={category} value={category}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {categoryItems.map((item) => (
                       <Card key={item.name} className="overflow-hidden hover:shadow-lg transition-shadow">
-                        <CardContent className="p-2">
-                          <div className="relative w-full h-32 mb-2 rounded overflow-hidden">
-                            <img
-                              src={getImagePath(item.image, category)}
-                              alt={item.name}
-                              onError={(e) => {
-                                console.log(`Image load error for ${item.name}, using default for ${category}`);
-                                e.currentTarget.src = defaultImages[category as keyof typeof defaultImages];
-                              }}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="flex justify-between items-start mb-1">
+                        <CardContent className="p-4">
+                          <div className="flex justify-between items-start mb-2">
                             <h3 className="text-sm font-semibold">{item.name}</h3>
                             <span className="text-sm font-medium text-primary">
                               {item.price}
                             </span>
                           </div>
                           {item.description && (
-                            <p className="text-xs text-muted-foreground mb-1 line-clamp-2">
+                            <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
                               {item.description}
                             </p>
                           )}
                           {item.customizations && item.customizations.length > 0 && (
-                            <div className="mt-1 pt-1 border-t border-border">
+                            <div className="mt-2 pt-2 border-t border-border">
                               <p className="text-xs font-medium mb-1">Customizations:</p>
                               <ul className="text-xs text-muted-foreground">
                                 {item.customizations.map((option, index) => (
