@@ -1,5 +1,6 @@
 import { MenuItem } from "@shared/schema";
 
+// Ensure the menu data is exported as a constant
 export const menuData: MenuItem[] = [
   // Breakfast Items
   {
@@ -294,3 +295,6 @@ export const menuData: MenuItem[] = [
     category: "Drinks"
   }
 ];
+
+// Add a default export as well for better compatibility
+export default menuData;

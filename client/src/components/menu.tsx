@@ -6,6 +6,11 @@ import { menuData } from "../data/menu";
 const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"];
 
 export default function Menu() {
+  // Add console logs to help debug the deployed version
+  console.log("Menu component rendered");
+  console.log("Available menu items:", menuData?.length);
+  console.log("Categories:", categories);
+
   return (
     <section id="menu" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -28,6 +33,7 @@ export default function Menu() {
 
             {categories.map((category) => {
               const categoryItems = menuData.filter(item => item.category === category);
+              console.log(`Items in ${category}:`, categoryItems.length);
 
               return (
                 <TabsContent key={category} value={category}>
