@@ -7,8 +7,8 @@ export interface MenuItem {
   readonly customizations?: readonly string[];
 }
 
-// Export as a readonly constant array to ensure static analysis
-export const menuData = [
+// Use a type assertion to ensure the type is properly inferred
+export const menuData: readonly MenuItem[] = [
   // Breakfast Items
   {
     name: "Tex-Mex Tacos",
@@ -447,5 +447,4 @@ export const menuData = [
   }
 ] as const;
 
-// Default export for better static site compatibility
-export default menuData;
+// We're removing the default export to ensure consistent imports
