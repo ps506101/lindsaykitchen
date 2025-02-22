@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
-import { Utensils } from "lucide-react";
 import type { MenuItem } from "@shared/schema";
 
 const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"];
@@ -18,9 +17,16 @@ const defaultImages = {
 export default function Menu() {
   const { data: menuItems, isLoading, error } = useQuery<MenuItem[]>({
     queryKey: ["/api/menu"],
+    onError: (error) => {
+      console.error("Failed to fetch menu items:", error);
+    },
+    onSuccess: (data) => {
+      console.log("Successfully fetched menu items:", data?.length);
+    }
   });
 
   if (isLoading) {
+    console.log("Loading menu items...");
     return (
       <section id="menu" className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -31,17 +37,21 @@ export default function Menu() {
   }
 
   if (error) {
+    console.error("Error in Menu component:", error);
     return (
       <section id="menu" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Error Loading Menu</h2>
-          <p className="text-center text-red-500">Please try again later.</p>
+          <p className="text-center text-red-500">
+            {error instanceof Error ? error.message : "Please try again later."}
+          </p>
         </div>
       </section>
     );
   }
 
   if (!menuItems || menuItems.length === 0) {
+    console.log("No menu items available");
     return (
       <section id="menu" className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -50,6 +60,8 @@ export default function Menu() {
       </section>
     );
   }
+
+  console.log(`Rendering ${menuItems.length} menu items`);
 
   return (
     <section id="menu" className="py-20 bg-background">
@@ -71,12 +83,14 @@ export default function Menu() {
               ))}
             </TabsList>
 
-            {categories.map((category) => (
-              <TabsContent key={category} value={category}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                  {menuItems
-                    .filter(item => item.category === category)
-                    .map((item) => (
+            {categories.map((category) => {
+              const categoryItems = menuItems.filter(item => item.category === category);
+              console.log(`Category ${category} has ${categoryItems.length} items`);
+
+              return (
+                <TabsContent key={category} value={category}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                    {categoryItems.map((item) => (
                       <Card key={item.name} className="overflow-hidden hover:shadow-lg transition-shadow">
                         <CardContent className="p-2">
                           {item.image && (
@@ -85,6 +99,7 @@ export default function Menu() {
                                 src={item.image.startsWith('/') ? item.image : `/assets/menu-images/${item.image}`}
                                 alt={item.name}
                                 onError={(e) => {
+                                  console.log(`Image load error for ${item.name}, using default`);
                                   e.currentTarget.src = defaultImages[category as keyof typeof defaultImages];
                                 }}
                                 className="w-full h-full object-cover"
@@ -117,9 +132,10 @@ export default function Menu() {
                         </CardContent>
                       </Card>
                     ))}
-                </div>
-              </TabsContent>
-            ))}
+                  </div>
+                </TabsContent>
+              );
+            })}
           </Tabs>
         </motion.div>
       </div>
