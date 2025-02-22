@@ -36,9 +36,9 @@ export default function Menu() {
           <h2 className="text-3xl font-bold text-center mb-12">Our Menu</h2>
 
           <Tabs defaultValue="Breakfast" className="w-full">
-            <TabsList className="w-full justify-center mb-8">
+            <TabsList className="flex flex-wrap justify-center gap-2 mb-8">
               {categories.map((category) => (
-                <TabsTrigger key={category} value={category}>
+                <TabsTrigger key={category} value={category} className="px-4 py-2">
                   {category}
                 </TabsTrigger>
               ))}
@@ -48,31 +48,37 @@ export default function Menu() {
               const categoryItems = menuData.filter(item => item.category === category);
               console.log(`Items in ${category}:`, categoryItems.length);
 
+              if (categoryItems.length === 0) {
+                return (
+                  <TabsContent key={category} value={category}>
+                    <p className="text-center text-muted-foreground">No items available in this category.</p>
+                  </TabsContent>
+                );
+              }
+
               return (
                 <TabsContent key={category} value={category}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {categoryItems.map((item) => (
-                      <Card key={item.name} className="overflow-hidden hover:shadow-lg transition-shadow">
-                        <CardContent className="p-4">
-                          <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-sm font-semibold">{item.name}</h3>
-                            <span className="text-sm font-medium text-primary">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    {categoryItems.map((item, index) => (
+                      <Card key={`${item.name}-${index}`} className="flex flex-col">
+                        <CardContent className="flex-1 p-4">
+                          <div className="flex justify-between items-start gap-2">
+                            <h3 className="font-semibold flex-1">{item.name}</h3>
+                            <span className="text-sm font-medium text-primary whitespace-nowrap">
                               {item.price}
                             </span>
                           </div>
                           {item.description && (
-                            <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                            <p className="text-sm text-muted-foreground mt-1">
                               {item.description}
                             </p>
                           )}
                           {item.customizations && item.customizations.length > 0 && (
                             <div className="mt-2 pt-2 border-t border-border">
-                              <p className="text-xs font-medium mb-1">Customizations:</p>
-                              <ul className="text-xs text-muted-foreground">
-                                {item.customizations.map((option, index) => (
-                                  <li key={index} className="mb-0.5 line-clamp-1">
-                                    {option}
-                                  </li>
+                              <p className="text-sm font-medium">Customizations:</p>
+                              <ul className="text-sm text-muted-foreground">
+                                {item.customizations.map((option, idx) => (
+                                  <li key={idx}>{option}</li>
                                 ))}
                               </ul>
                             </div>
