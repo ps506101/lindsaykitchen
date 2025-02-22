@@ -21,8 +21,17 @@ export const menuData: MenuItem[] = [
       "Add Avocado +$2"
     ]
   },
-  // ... copying all the menu items from server/routes.ts
-  // Special Cuisine Items
+  {
+    name: "Single Pancake",
+    description: "One fluffy pancake",
+    price: "$3.99",
+    category: "Breakfast",
+    customizations: [
+      "Add Chocolate Chips or Blueberries +$1",
+      "Add Banana & Whip Cream +$2"
+    ]
+  },
+  // Special Cuisine
   {
     name: "Butter Chicken",
     description: "Tender chicken in a rich, creamy tomato sauce",
@@ -33,6 +42,12 @@ export const menuData: MenuItem[] = [
     name: "Chicken Tikka Masala",
     description: "Grilled chicken in spiced tomato gravy",
     price: "$14.99",
+    category: "Special Cuisine"
+  },
+  {
+    name: "Tandoori Chicken",
+    description: "Clay oven roasted chicken with Indian spices",
+    price: "$13.99",
     category: "Special Cuisine"
   },
   // Lunch Items
@@ -48,6 +63,12 @@ export const menuData: MenuItem[] = [
     price: "$7.49",
     category: "Lunch"
   },
+  {
+    name: "Chicken Strip Basket",
+    description: "4 crispy chicken strips served with fries and gravy",
+    price: "$7.99",
+    category: "Lunch"
+  },
   // Sides
   {
     name: "French Fries",
@@ -61,6 +82,12 @@ export const menuData: MenuItem[] = [
     price: "$3.49",
     category: "Sides"
   },
+  {
+    name: "Side Salad",
+    description: "Fresh lettuce, tomato, and cheese",
+    price: "$2.99",
+    category: "Sides"
+  },
   // Drinks
   {
     name: "Fountain Drink",
@@ -72,6 +99,12 @@ export const menuData: MenuItem[] = [
     name: "Coffee",
     description: "Fresh brewed coffee",
     price: "$1.49",
+    category: "Drinks"
+  },
+  {
+    name: "Iced Tea",
+    description: "Sweet or unsweet tea",
+    price: "$1.99",
     category: "Drinks"
   }
 ];
