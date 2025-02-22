@@ -19,7 +19,10 @@ export async function apiRequest(
 
   const res = await fetch(apiUrl, {
     method,
-    headers: data ? { "Content-Type": "application/json" } : {},
+    headers: {
+      ...data ? { "Content-Type": "application/json" } : {},
+      'Accept': 'application/json'
+    },
     body: data ? JSON.stringify(data) : undefined,
     credentials: "include",
   });
@@ -41,6 +44,9 @@ export const getQueryFn: <T>(options: {
 
     try {
       const res = await fetch(apiUrl, {
+        headers: {
+          'Accept': 'application/json'
+        },
         credentials: "include",
       });
 
@@ -66,9 +72,11 @@ export const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
       staleTime: Infinity,
       retry: 1,
+      retryDelay: 1000,
     },
     mutations: {
       retry: 1,
+      retryDelay: 1000,
     },
   },
 });
