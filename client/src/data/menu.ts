@@ -1,6 +1,13 @@
-import { MenuItem } from "@shared/schema";
+// Static menu data without schema dependencies
+export interface MenuItem {
+  name: string;
+  description: string;
+  price: string;
+  category: string;
+  customizations?: string[];
+}
 
-// Ensure the menu data is exported as a constant
+// Ensure the menu data is exported as a const array
 export const menuData: MenuItem[] = [
   // Breakfast Items
   {
@@ -438,7 +445,7 @@ export const menuData: MenuItem[] = [
     price: "$1.50",
     category: "Drinks"
   }
-];
+] as const;
 
-// Add a default export as well for better compatibility
+// Add a default export for better static site compatibility
 export default menuData;

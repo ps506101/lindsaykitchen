@@ -3,17 +3,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { menuData } from "../data/menu";
 
+// Define categories statically to ensure they're bundled
 const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"];
 
 export default function Menu() {
-  // Add console logs to help debug the deployed version
-  console.log("Menu component rendered");
-  console.log("Available menu items:", menuData?.length);
-  console.log("Categories:", categories);
+  // Debug logging
+  console.log("[Menu] Component mounted");
+  console.log("[Menu] Menu data length:", menuData?.length ?? 0);
+  console.log("[Menu] Available categories:", categories);
 
-  // Fallback content if menu data is not available
-  if (!menuData || menuData.length === 0) {
-    console.error("Menu data is not available");
+  // Static error boundary
+  if (!Array.isArray(menuData)) {
+    console.error("[Menu] Menu data is not an array");
     return (
       <section id="menu" className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -35,10 +36,14 @@ export default function Menu() {
         >
           <h2 className="text-3xl font-bold text-center mb-12">Our Menu</h2>
 
-          <Tabs defaultValue="Breakfast" className="w-full">
+          <Tabs defaultValue={categories[0]} className="w-full">
             <TabsList className="flex flex-wrap justify-center gap-2 mb-8">
               {categories.map((category) => (
-                <TabsTrigger key={category} value={category} className="px-4 py-2">
+                <TabsTrigger 
+                  key={category} 
+                  value={category}
+                  className="px-4 py-2"
+                >
                   {category}
                 </TabsTrigger>
               ))}
@@ -46,22 +51,24 @@ export default function Menu() {
 
             {categories.map((category) => {
               const categoryItems = menuData.filter(item => item.category === category);
-              console.log(`Items in ${category}:`, categoryItems.length);
+              console.log(`[Menu] Items in ${category}:`, categoryItems.length);
 
               if (categoryItems.length === 0) {
                 return (
                   <TabsContent key={category} value={category}>
-                    <p className="text-center text-muted-foreground">No items available in this category.</p>
+                    <p className="text-center text-muted-foreground">
+                      No items available in this category.
+                    </p>
                   </TabsContent>
                 );
               }
 
               return (
                 <TabsContent key={category} value={category}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {categoryItems.map((item, index) => (
-                      <Card key={`${item.name}-${index}`} className="flex flex-col">
-                        <CardContent className="flex-1 p-4">
+                      <Card key={`${category}-${index}`}>
+                        <CardContent className="p-4">
                           <div className="flex justify-between items-start gap-2">
                             <h3 className="font-semibold flex-1">{item.name}</h3>
                             <span className="text-sm font-medium text-primary whitespace-nowrap">
