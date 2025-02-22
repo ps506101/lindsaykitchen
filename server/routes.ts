@@ -9,16 +9,29 @@ sgMail.setApiKey('SG.1234'); // Using a minimal test API key for now
 export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/menu", (_req, res) => {
     try {
-      console.log("Serving menu data...");
       if (!menuData || !Array.isArray(menuData)) {
         console.error("Menu data is invalid or not properly initialized");
         return res.status(500).json({ error: "Invalid menu data structure" });
       }
-      console.log(`Serving ${menuData.length} menu items`);
-      res.json(menuData);
+
+      // Validate each menu item has required fields
+      const validMenuData = menuData.filter(item => {
+        return item && typeof item === 'object' && 
+               'name' in item && 
+               'price' in item && 
+               'category' in item;
+      });
+
+      if (validMenuData.length === 0) {
+        console.error("No valid menu items found");
+        return res.status(500).json({ error: "No valid menu items available" });
+      }
+
+      console.log(`Serving ${validMenuData.length} valid menu items`);
+      return res.json(validMenuData);
     } catch (error) {
       console.error("Error serving menu data:", error);
-      res.status(500).json({ error: "Failed to fetch menu data" });
+      return res.status(500).json({ error: "Failed to fetch menu data" });
     }
   });
 
@@ -49,8 +62,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   return httpServer;
 }
 
-// Keep the existing menuData array here
-const menuData = [
+// Keep the existing menuData array here but export it
+export const menuData = [
   // Breakfast Items
   {
     name: "Tex-Mex Tacos",

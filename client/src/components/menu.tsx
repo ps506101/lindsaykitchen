@@ -8,7 +8,15 @@ const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"];
 
 export default function Menu() {
   const { data: menuItems, isLoading, error } = useQuery<MenuItem[]>({
-    queryKey: ["/api/menu"]
+    queryKey: ["/api/menu"],
+    retry: 3,
+    retryDelay: 1000,
+    onError: (err) => {
+      console.error("Failed to fetch menu items:", err);
+    },
+    onSuccess: (data) => {
+      console.log("Successfully fetched menu items:", data?.length);
+    }
   });
 
   if (isLoading) {
