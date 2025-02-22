@@ -165,7 +165,7 @@ export const menuData: MenuItem[] = [
     price: "$13.99",
     category: "Special Cuisine"
   },
-    {
+  {
     name: "Sabudana Vada (3 pcs)",
     description: "Crispy sago pearls patties, traditional fasting food",
     price: "$5.99",

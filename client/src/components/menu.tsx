@@ -11,6 +11,19 @@ export default function Menu() {
   console.log("Available menu items:", menuData?.length);
   console.log("Categories:", categories);
 
+  // Fallback content if menu data is not available
+  if (!menuData || menuData.length === 0) {
+    console.error("Menu data is not available");
+    return (
+      <section id="menu" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Our Menu</h2>
+          <p className="text-center">Menu is currently being updated. Please check back later.</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="menu" className="py-20 bg-background">
       <div className="container mx-auto px-4">
