@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { menuData } from "../data/menu";
@@ -67,8 +66,11 @@ export default function Menu() {
                 <TabsContent key={category} value={category}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {categoryItems.map((item, index) => (
-                      <Card key={`${category}-${index}`}>
-                        <CardContent className="p-4">
+                      <div
+                        key={`${category}-${index}`}
+                        className="bg-card text-card-foreground rounded-lg border shadow-sm hover:shadow-md transition-shadow"
+                      >
+                        <div className="p-4">
                           <div className="flex justify-between items-start gap-2">
                             <h3 className="font-semibold flex-1">{item.name}</h3>
                             <span className="text-sm font-medium text-primary whitespace-nowrap">
@@ -90,8 +92,8 @@ export default function Menu() {
                               </ul>
                             </div>
                           )}
-                        </CardContent>
-                      </Card>
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </TabsContent>
