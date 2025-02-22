@@ -9,41 +9,68 @@ const __dirname = path.dirname(__filename);
 const sourceDir = path.join(__dirname, 'dist', 'public');
 const destDir = path.join(__dirname, 'dist');
 
-// Function to move files recursively
-function moveFiles(source, dest) {
-  // Read source directory
+// Function to ensure directory exists
+function ensureDirectoryExists(dir) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+// Function to copy files recursively
+function copyFiles(source, dest) {
+  // Skip if source and dest are the same
+  if (source === dest) return;
+
   const files = fs.readdirSync(source);
 
-  // Process each file/directory
   files.forEach(file => {
     const sourcePath = path.join(source, file);
     const destPath = path.join(dest, file);
 
-    // Get file stats
     const stats = fs.statSync(sourcePath);
-
     if (stats.isDirectory()) {
-      // If it's a directory, create it in destination and recurse
-      if (!fs.existsSync(destPath)) {
-        fs.mkdirSync(destPath, { recursive: true });
-      }
-      moveFiles(sourcePath, destPath);
-      // Remove source directory after moving all contents
-      fs.rmdirSync(sourcePath);
+      // For directories, recursively copy
+      ensureDirectoryExists(destPath);
+      copyFiles(sourcePath, destPath);
     } else {
-      // If it's a file, move it to destination
-      fs.renameSync(sourcePath, destPath);
+      // For files, copy to destination
+      fs.copyFileSync(sourcePath, destPath);
     }
   });
 }
 
+// Function to remove directory recursively
+function removeDirectory(dir) {
+  if (fs.existsSync(dir)) {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+}
+
 try {
-  // Move files from dist/public to dist
-  moveFiles(sourceDir, destDir);
-  // Remove the now-empty public directory
-  fs.rmdirSync(sourceDir);
-  console.log('Successfully moved build files to dist directory');
+  // If the source directory exists and contains files
+  if (fs.existsSync(sourceDir) && fs.readdirSync(sourceDir).length > 0) {
+    console.log('Moving files from dist/public to dist...');
+
+    // Copy all files from dist/public to dist
+    copyFiles(sourceDir, destDir);
+
+    // Remove the public directory after copying
+    removeDirectory(sourceDir);
+
+    // Additional cleanup - remove any empty directories
+    const dirs = fs.readdirSync(destDir);
+    dirs.forEach(dir => {
+      const fullPath = path.join(destDir, dir);
+      if (fs.statSync(fullPath).isDirectory() && fs.readdirSync(fullPath).length === 0) {
+        removeDirectory(fullPath);
+      }
+    });
+
+    console.log('Successfully moved build files to dist directory');
+  } else {
+    console.log('dist/public directory not found or empty, assuming files are already in correct location');
+  }
 } catch (error) {
-  console.error('Error moving build files:', error);
+  console.error('Error processing build files:', error);
   process.exit(1);
 }
