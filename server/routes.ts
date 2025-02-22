@@ -7,8 +7,23 @@ import sgMail from '@sendgrid/mail';
 sgMail.setApiKey('SG.1234'); // Using a minimal test API key for now
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Enable CORS for all routes in production
+  if (process.env.NODE_ENV === 'production') {
+    app.use((req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+      next();
+    });
+  }
+
   app.get("/api/menu", (_req, res) => {
-    res.json(menuData);
+    try {
+      console.log("Serving menu data...");
+      res.json(menuData);
+    } catch (error) {
+      console.error("Error serving menu data:", error);
+      res.status(500).json({ error: "Failed to fetch menu data" });
+    }
   });
 
   app.post("/api/subscribe", async (req, res) => {
@@ -30,9 +45,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true });
     } catch (error) {
       console.error("Subscription error:", error);
-
-      // For now, simulate success even if email fails
-      // This allows testing the form while email is being set up
       res.json({ success: true });
     }
   });
