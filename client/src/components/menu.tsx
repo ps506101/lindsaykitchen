@@ -6,13 +6,22 @@ import type { MenuItem } from "@shared/schema";
 
 const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"];
 
+// Update default image paths to be relative to public directory
 const defaultImages = {
-  "Breakfast": "/assets/menu-images/breakfast-default.jpg",
-  "Special Cuisine": "/assets/menu-images/special-cuisine-default.jpg",
-  "Lunch": "/assets/menu-images/lunch-default.jpg",
-  "Sides": "/assets/menu-images/sides-default.jpg",
-  "Drinks": "/assets/menu-images/drinks-default.jpg"
+  "Breakfast": "menu-images/breakfast-default.jpg",
+  "Special Cuisine": "menu-images/special-cuisine-default.jpg",
+  "Lunch": "menu-images/lunch-default.jpg",
+  "Sides": "menu-images/sides-default.jpg",
+  "Drinks": "menu-images/drinks-default.jpg"
 } as const;
+
+// Helper function to get correct image path
+const getImagePath = (imagePath: string | undefined, category: string) => {
+  if (!imagePath) return defaultImages[category as keyof typeof defaultImages];
+  if (imagePath.startsWith('http')) return imagePath;
+  // Remove any leading slashes and ensure proper path format
+  return `menu-images/${imagePath.replace(/^[\/\\]+/, '')}`;
+};
 
 export default function Menu() {
   const { data: menuItems, isLoading, error } = useQuery<MenuItem[]>({
@@ -93,19 +102,17 @@ export default function Menu() {
                     {categoryItems.map((item) => (
                       <Card key={item.name} className="overflow-hidden hover:shadow-lg transition-shadow">
                         <CardContent className="p-2">
-                          {item.image && (
-                            <div className="relative w-full h-32 mb-2 rounded overflow-hidden">
-                              <img
-                                src={item.image.startsWith('/') ? item.image : `/assets/menu-images/${item.image}`}
-                                alt={item.name}
-                                onError={(e) => {
-                                  console.log(`Image load error for ${item.name}, using default`);
-                                  e.currentTarget.src = defaultImages[category as keyof typeof defaultImages];
-                                }}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          )}
+                          <div className="relative w-full h-32 mb-2 rounded overflow-hidden">
+                            <img
+                              src={getImagePath(item.image, category)}
+                              alt={item.name}
+                              onError={(e) => {
+                                console.log(`Image load error for ${item.name}, using default for ${category}`);
+                                e.currentTarget.src = defaultImages[category as keyof typeof defaultImages];
+                              }}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
                           <div className="flex justify-between items-start mb-1">
                             <h3 className="text-sm font-semibold">{item.name}</h3>
                             <span className="text-sm font-medium text-primary">
