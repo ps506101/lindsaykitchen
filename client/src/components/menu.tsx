@@ -1,31 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { menuData, MenuItem } from "../data/menu";
-
-// Define categories and ensure they're typed correctly
-const categories = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"] as const;
-type Category = typeof categories[number];
+import { MenuItem, MenuCategory, MENU_CATEGORIES, getItemsByCategory } from "../data/menu";
 
 export default function Menu() {
-  const [activeCategory, setActiveCategory] = useState<Category>(categories[0]);
+  const [activeCategory, setActiveCategory] = useState<MenuCategory>(MENU_CATEGORIES[0]);
 
-  // Ensure we have menu data during build
-  if (!Array.isArray(menuData) || menuData.length === 0) {
-    return (
-      <section id="menu" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Menu</h2>
-          <p className="text-center text-muted-foreground">Menu is currently unavailable.</p>
-        </div>
-      </section>
-    );
-  }
-
-  const filteredItems = menuData.filter((item): item is MenuItem => 
-    item?.category === activeCategory && 
-    typeof item.name === 'string' && 
-    typeof item.price === 'string'
-  );
+  // Pre-calculate items for the active category
+  const items = getItemsByCategory(activeCategory);
 
   return (
     <section id="menu" className="py-20 bg-background">
@@ -40,7 +21,7 @@ export default function Menu() {
 
           <div className="w-full">
             <div className="flex flex-wrap justify-center gap-2 mb-8">
-              {categories.map((category) => (
+              {MENU_CATEGORIES.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
@@ -56,7 +37,7 @@ export default function Menu() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredItems.map((item, index) => (
+              {items.map((item, index) => (
                 <div
                   key={`${activeCategory}-${index}`}
                   className="bg-background border border-border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow"

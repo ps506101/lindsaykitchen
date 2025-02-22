@@ -7,8 +7,12 @@ export interface MenuItem {
   readonly customizations?: readonly string[];
 }
 
-// Use a type assertion to ensure the type is properly inferred
-export const menuData: readonly MenuItem[] = [
+// Define categories as a constant to ensure consistency
+export const MENU_CATEGORIES = ["Breakfast", "Special Cuisine", "Lunch", "Sides", "Drinks"] as const;
+export type MenuCategory = typeof MENU_CATEGORIES[number];
+
+// Export menu items as a constant array with proper typing
+export const menuItems: readonly MenuItem[] = [
   // Breakfast Items
   {
     name: "Tex-Mex Tacos",
@@ -447,4 +451,7 @@ export const menuData: readonly MenuItem[] = [
   }
 ] as const;
 
-// We're removing the default export to ensure consistent imports
+// Helper function to get items by category
+export function getItemsByCategory(category: MenuCategory): readonly MenuItem[] {
+  return menuItems.filter(item => item.category === category);
+}
