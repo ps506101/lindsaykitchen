@@ -1,14 +1,14 @@
-// Static menu data without schema dependencies
+// Static menu data definition
 export interface MenuItem {
-  name: string;
-  description: string;
-  price: string;
-  category: string;
-  customizations?: string[];
+  readonly name: string;
+  readonly description: string;
+  readonly price: string;
+  readonly category: string;
+  readonly customizations?: readonly string[];
 }
 
-// Ensure the menu data is exported as a const array
-export const menuData: MenuItem[] = [
+// Export as a readonly constant array to ensure static analysis
+export const menuData = [
   // Breakfast Items
   {
     name: "Tex-Mex Tacos",
@@ -447,5 +447,5 @@ export const menuData: MenuItem[] = [
   }
 ] as const;
 
-// Add a default export for better static site compatibility
+// Default export for better static site compatibility
 export default menuData;
